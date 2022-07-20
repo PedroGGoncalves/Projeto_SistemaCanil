@@ -2,10 +2,7 @@ package projeto.utils;
 
 import projeto.model.Pet;
 
-/**
- *
- * @author Samuel Bastos Buchdid
- */
+
 public class InstanceGenerator {
     
     private InstanceGenerator(){
