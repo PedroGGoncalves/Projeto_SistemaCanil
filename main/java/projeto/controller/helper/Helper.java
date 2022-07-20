@@ -1,6 +1,7 @@
 package projeto.controller.helper;
 
 import projeto.controller.command.CadastrarPet;
+import projeto.controller.command.CadastrarCliente;
 import projeto.controller.command.ICommand;
 
 public class Helper {
@@ -15,6 +16,11 @@ public class Helper {
             case "/CadastrarPet": {
                 System.out.println("Comando criado!");
                 command = new CadastrarPet();
+            }
+            break;
+            case "/CadastrarCliente": {
+                System.out.println("Comando criado!");
+                command = new CadastrarCliente();
             }
             break;
         }

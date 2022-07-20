@@ -12,4 +12,7 @@ public class DaoFactory {
     public static PetDAO getPetDAO(){
         return new PetDAOImpl();
     }
+    public static ClienteDAO getClienteDAO(){
+        return new ClienteDAOImpl();
+    }
 }

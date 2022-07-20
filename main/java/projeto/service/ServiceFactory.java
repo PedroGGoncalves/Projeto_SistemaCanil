@@ -14,6 +14,9 @@ public class ServiceFactory {
     public static PetService getPetService(){
         return new PetServiceImpl();
     }
+    public static ClienteService getClienteService(){
+        return new ClienteServiceImpl();
+    }
     
 }
 

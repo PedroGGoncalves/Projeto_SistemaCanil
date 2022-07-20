@@ -14,6 +14,7 @@
         <servlet-name>SrvController</servlet-name>
         <url-pattern>/SrvController</url-pattern>
         <url-pattern>/CadastrarPet</url-pattern>
+        <url-pattern>/CadastrarCliente</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

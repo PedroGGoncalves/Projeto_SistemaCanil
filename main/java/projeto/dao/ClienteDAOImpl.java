@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package projeto.dao;
-import projeto.model.Pet;
+import projeto.model.Cliente;
 import projeto.utils.FabricaConexao;
 
 import java.sql.Connection;
@@ -15,9 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class PetDAOImpl implements PetDAO {
+public class ClienteDAOImpl implements ClienteDAO {
     @Override
-    public boolean save(Pet pet) {
+    public boolean save(Cliente cliente) {
 
         boolean b = false;
         Connection con = null;
@@ -29,11 +29,11 @@ public class PetDAOImpl implements PetDAO {
         if (con != null) {
             try {
                 pstm = con.prepareStatement(INSERT_PET);
-                pstm.setString(1, pet.getNome());
-                pstm.setString(2, pet.getRaca());
-                pstm.setString(3, pet.getTamanho());
-                pstm.setString(4, pet.getUrl());
-                pstm.setInt(5, pet.getIdade());
+                pstm.setString(1, cliente.getNome());
+                pstm.setString(2, cliente.getEndereco());
+                pstm.setString(3, cliente.getTemPet());
+                pstm.setString(4, cliente.getEmail());
+                pstm.setInt(5, cliente.getIdade());
 
                 pstm.executeUpdate();
 
@@ -47,45 +47,45 @@ public class PetDAOImpl implements PetDAO {
     }
     
      @Override
-    public Pet findById(Long idPet) {
+    public Cliente findById(Long idCliente) {
 
         Connection con = null;
         PreparedStatement pstm = null;
         ResultSet res = null;
-        Pet pet = null;
+        Cliente cliente = null;
 
         con = FabricaConexao.getConexao();
 
         if (con != null) {
             try {
                 pstm = con.prepareStatement(FIND_BY_ID);
-                pstm.setLong(1, idPet);
+                pstm.setLong(1, idCliente);
                 res = pstm.executeQuery();
 
                 while (res.next()) {
-                    pet = new Pet();
-                    pet.setIdPet(res.getLong(1));
-                    pet.setNome(res.getString(2));
-                    pet.setRaca(res.getString(3));
-                    pet.setTamanho(res.getString(4));
-                    pet.setUrl(res.getString(5));
-                    pet.setIdade(res.getInt(6));
+                    cliente = new Cliente();
+                    cliente.setIdCliente(res.getLong(1));
+                    cliente.setNome(res.getString(2));
+                    cliente.setEndereco(res.getString(3));
+                    cliente.setTemPet(res.getString(4));
+                    cliente.setEmail(res.getString(5));
+                    cliente.setIdade(res.getInt(6));
                 }
             } catch (SQLException ex) {
                 System.out.println("Message: " + ex);
             }
         }
 
-        return pet;
+        return cliente;
     }
 
     @Override
-    public List<Pet> findAll() {
+    public List<Cliente> findAll() {
 
         Connection con = null;
         PreparedStatement pstm = null;
         ResultSet res = null;
-        List<Pet> lista = new ArrayList<>();
+        List<Cliente> lista = new ArrayList<>();
 
         con = FabricaConexao.getConexao();
 
@@ -95,15 +95,15 @@ public class PetDAOImpl implements PetDAO {
                 res = pstm.executeQuery();
                                 
                 while (res.next()) {                    
-                    Pet pet = new Pet();
-                    pet.setIdPet(res.getLong(1));
-                    pet.setNome(res.getString(2));
-                    pet.setRaca(res.getString(3));
-                    pet.setTamanho(res.getString(4));
-                    pet.setUrl(res.getString(5));
-                    pet.setIdade(res.getInt(6));
+                    Cliente cliente = new Cliente();
+                   cliente.setIdCliente(res.getLong(1));
+                    cliente.setNome(res.getString(2));
+                    cliente.setEndereco(res.getString(3));
+                    cliente.setTemPet(res.getString(4));
+                    cliente.setEmail(res.getString(5));
+                    cliente.setIdade(res.getInt(6));
                     
-                    lista.add(pet);
+                    lista.add(cliente);
                 }
             } catch (SQLException ex) {
                 System.out.println("Message: " + ex);
